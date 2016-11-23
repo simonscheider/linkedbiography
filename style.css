@@ -1,0 +1,99 @@
+body, html {
+  overflow: hidden;
+  font-family:Arial,Helvetica,sans-serif;
+
+  padding: 0;
+  margin: 0;
+
+  color: #333;
+}
+@media only screen and (max-width: 900px) { 
+  #nav_title { 
+    display: none; 
+  } 
+}
+#navBar {
+   position: absolute;
+  width: 100%;
+  height: 120px;
+  
+  margin: 0;
+  z-index: 9999;
+
+  background-color: white;
+
+  box-shadow:0px 0px 10px rgba(0, 0, 0, 0.4);
+   -webkit-transition: all 0.4s linear;
+   -moz-transition: all 0.4s linear;
+   -o-transition: all 0.4s linear;
+  transition: all 0.4s linear;
+}
+
+#img_next {
+  float: left; 
+width:20px
+}
+#img_person {
+  float: left; 
+height:120px
+}
+
+#nav_title {
+  float: left;
+  font-size: 14pt;
+  padding: 12px;
+}
+
+#Mapcontainer {
+  position: absolute;
+  width: 400px;
+  height: 500px;
+  
+  top: 120px;
+  bottom: 180px;
+  margin: 0;
+  right: 0;
+  z-index: 9990;
+  
+  border-left: 1px solid #ddd;
+}
+
+#QuestionAnswer {
+float: center;
+padding: 12px;
+	position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 450px;
+	top: 120px;
+	
+	
+}
+#AnswerTable {
+  float: center;
+  position: absolute;
+ 
+  width: 100%;
+  height: 250px;
+
+  background-color: white;
+  border-top: 3px solid #ddd;
+}
+
+#Question {
+float: center;
+
+height: 80px;
+padding: 12px;
+
+ }
+
+
+#result {
+  position: inherit;
+  height: 100% ;
+  width: 100% !important;
+  overflow: scroll;
+}
+
+

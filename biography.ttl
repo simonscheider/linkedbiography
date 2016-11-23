@@ -1,0 +1,146 @@
+#This is a spatial biography of Johann Wolfgang von Goethe
+
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
+@prefix xml: <http://www.w3.org/XML/1998/namespace>.
+@prefix dc: <http://purl.org/dc/elements/1.1/>.
+@prefix dbp: <http://dbpedia.org/resource/>.
+@prefix dbp-ont: <http://dbpedia.org/ontology/>.
+@prefix dct: <http://purl.org/dc/terms/>.
+@prefix wgs84: <http://www.w3.org/2003/01/geo/wgs84_pos#>.
+@prefix foaf: <http://xmlns.com/foaf/0.1/>.
+
+
+# Note that it is necessary to encode special symbols (e.g. ß) with UTF-8 hexadecimal unicode. 
+# e.g. dbo:birthName "Carl Friedrich Gau\uc39f";
+# see: http://www.w3.org/TR/turtle/  (Special characters) and http://www.utf8-zeichentabelle.de/unicode-utf8-table.pl?unicodeinhtml=hex
+# e.g.  using unicode brackets:
+#<http://dbpedia.org/resource/Tre_Kronor\u0028castle\u0029> rdfs:label "Tre Kronor(castle)". 
+
+dbp:Johann_Wolfgang_von_Goethe dbp-ont:birthPlace dbp:Frankfurt ;
+foaf:name "Johann Wolfgang von Goethe";
+dbp-ont:birthDate 	   "1749-08-28^^xsd:date";
+dbp-ont:deathPlace dbp:Weimar ;
+dbp-ont:deathDate 	   "1832-03-22^^xsd:date";
+dbp-ont:thumbnail <https://upload.wikimedia.org/wikipedia/commons/thumb/0/0e/Goethe_%28Stieler_1828%29.jpg/195px-Goethe_%28Stieler_1828%29.jpg>;
+dbp-ont:spouse dbp:Christiane_Vulpius .
+dbp:Christiane_Vulpius foaf:name "Christiane Vulpius".
+
+dbp:Frankfurt wgs84:geometry   "<http://www.opengis.net/def/crs/OGC/1.3/CRS84> POINT(8.683333 50.116665)"^^<http://www.opengis.net/ont/sf#wktLiteral>;
+rdfs:label "Frankfurt am Main".
+dbp:Weimar wgs84:geometry   "<http://www.opengis.net/def/crs/OGC/1.3/CRS84> POINT(11.316666603088 50.983333587646)"^^<http://www.opengis.net/ont/sf#wktLiteral>;
+rdfs:label "Weimar".
+
+#Note: Strings need to be in UNICODE
+dbp:The_Sorrows_of_Young_Werther dbp-ont:author dbp:Johann_Wolfgang_von_Goethe ;
+rdfs:label "Die Leiden des jungen Werther".
+<http://d-nb.info/986366684/04> dbp-ont:author dbp:Johann_Wolfgang_von_Goethe ;
+rdfs:label "Faust. Der Trag\u00f6die erster Teil".
+#dbp:Iphigenia_in_Tauris_\(Goethe\)  dbp-ont:author dbp:Johann_Wolfgang_von_Goethe .  
+dbp:Theory_of_Colours    dbp-ont:author dbp:Johann_Wolfgang_von_Goethe ;
+rdfs:label "Farbenlehre".
+#dbp:Wilhelm_Meister\'s_Apprenticeship dbp-ont:author dbp:Johann_Wolfgang_von_Goethe .
+dbp:Italian_Journey dbp-ont:author dbp:Johann_Wolfgang_von_Goethe ;
+rdfs:label "Italienische Reise";
+dc:coverage dbp:Trento,     
+    dbp:Torbole,
+    dbp:Malcesine,
+    dbp:Verona,
+    dbp:Vicenza,
+    dbp:Padua,
+    dbp:Venedig,
+    dbp:Ferrara,
+    dbp:Cento,
+    dbp:Bologna,
+    dbp:Lojano,
+    dbp:Giredo,
+    dbp:Perugia,
+    dbp:Terni,
+    dbp:Cittiglio,
+    dbp:Rome,
+    dbp:Velletri,
+    dbp:Fondi,
+    #dbp:Sant\'Agata,
+    dbp:Naples,
+    dbp:Pompeii,
+    dbp:Palermo,
+    dbp:Alcamo,
+    dbp:Segesta,
+    dbp:Castelvetrano,
+    dbp:Sciacca,
+    dbp:Agrigento,
+    dbp:Caltanisetta,
+    dbp:Catania,
+    dbp:Taormina,
+    dbp:Messina,
+    dbp:Capri,    
+    dbp:Frascati,
+    dbp:Siena,
+    dbp:Florence,
+    dbp:Milan .
+
+dbp:Torbole rdfs:label "Torbole".
+dbp:Lojano  rdfs:label "Lojano".
+dbp:Giredo rdfs:label "Giredo".
+dbp:Trento wgs84:geometry "<http://www.opengis.net/def/crs/OGC/1.3/CRS84> POINT(11.116666793823 46.066665649414)"^^<http://www.opengis.net/ont/sf#wktLiteral>;
+rdfs:label "Trento".
+dbp:Malcesine wgs84:geometry "<http://www.opengis.net/def/crs/OGC/1.3/CRS84> POINT(10.816666603088 45.766666412354)"^^<http://www.opengis.net/ont/sf#wktLiteral>;
+rdfs:label "Malcesine".
+dbp:Verona wgs84:geometry "<http://www.opengis.net/def/crs/OGC/1.3/CRS84> POINT(10.983333587646 45.433334350586)"^^<http://www.opengis.net/ont/sf#wktLiteral>;
+rdfs:label "Verona".
+dbp:Vicenza wgs84:geometry "<http://www.opengis.net/def/crs/OGC/1.3/CRS84> POINT(11.550000190735 45.549999237061)"^^<http://www.opengis.net/ont/sf#wktLiteral>;
+rdfs:label "Vicenza".
+dbp:Padua wgs84:geometry "<http://www.opengis.net/def/crs/OGC/1.3/CRS84> POINT(11.866666793823 45.416667938232)"^^<http://www.opengis.net/ont/sf#wktLiteral>;
+rdfs:label "Padua".
+dbp:Venedig wgs84:geometry "<http://www.opengis.net/def/crs/OGC/1.3/CRS84> POINT(12.3358335495 45.4375)"^^<http://www.opengis.net/ont/sf#wktLiteral>;
+rdfs:label "Venezia".
+dbp:Ferrara wgs84:geometry "<http://www.opengis.net/def/crs/OGC/1.3/CRS84> POINT(11.616666793823 44.833332061768)"^^<http://www.opengis.net/ont/sf#wktLiteral>;
+rdfs:label "Ferrara".
+dbp:Cento  wgs84:geometry "<http://www.opengis.net/def/crs/OGC/1.3/CRS84> POINT(11.283333778381 44.733333587646)"^^<http://www.opengis.net/ont/sf#wktLiteral>;
+rdfs:label "Cento".
+dbp:Bologna wgs84:geometry "<http://www.opengis.net/def/crs/OGC/1.3/CRS84> POINT(11.351388931274 44.507499694824)"^^<http://www.opengis.net/ont/sf#wktLiteral>;
+rdfs:label "Bologna".
+dbp:Perugia wgs84:geometry "<http://www.opengis.net/def/crs/OGC/1.3/CRS84> POINT(12.388889312744 43.11222076416)"^^<http://www.opengis.net/ont/sf#wktLiteral>;
+rdfs:label "Perugia".
+dbp:Terni wgs84:geometry "<http://www.opengis.net/def/crs/OGC/1.3/CRS84> POINT(12.64999961853 42.566665649414)"^^<http://www.opengis.net/ont/sf#wktLiteral>;
+rdfs:label "Terni".
+dbp:Rome wgs84:geometry "<http://www.opengis.net/def/crs/OGC/1.3/CRS84> POINT(12.5 41.900001525879)"^^<http://www.opengis.net/ont/sf#wktLiteral>;
+rdfs:label "Roma".
+dbp:Cittiglio wgs84:geometry "<http://www.opengis.net/def/crs/OGC/1.3/CRS84> POINT(8.6666669845581 45.900001525879)"^^<http://www.opengis.net/ont/sf#wktLiteral>;
+rdfs:label "Citta Castellana".
+dbp:Velletri wgs84:geometry "<http://www.opengis.net/def/crs/OGC/1.3/CRS84> POINT(12.777500152588 41.686668395996)"^^<http://www.opengis.net/ont/sf#wktLiteral>;
+rdfs:label "Velletri".
+dbp:Fondi wgs84:geometry "<http://www.opengis.net/def/crs/OGC/1.3/CRS84> POINT(13.416666984558 41.349998474121)"^^<http://www.opengis.net/ont/sf#wktLiteral>;
+rdfs:label "Fondi".
+dbp:Naples wgs84:geometry "<http://www.opengis.net/def/crs/OGC/1.3/CRS84> POINT(14.25 40.833332061768)"^^<http://www.opengis.net/ont/sf#wktLiteral>;
+rdfs:label "Napoli".
+dbp:Pompeii rdfs:label "Pompeij".
+dbp:Palermo wgs84:geometry "<http://www.opengis.net/def/crs/OGC/1.3/CRS84> POINT(13.366666793823 38.116664886475)"^^<http://www.opengis.net/ont/sf#wktLiteral>;
+rdfs:label "Palermo".
+dbp:Alcamo wgs84:geometry "<http://www.opengis.net/def/crs/OGC/1.3/CRS84> POINT(12.966666221619 37.966667175293)"^^<http://www.opengis.net/ont/sf#wktLiteral>;
+rdfs:label  "Alcamo".
+dbp:Segesta rdfs:label  "Segesta".
+dbp:Castelvetrano wgs84:geometry "<http://www.opengis.net/def/crs/OGC/1.3/CRS84> POINT(12.793055534363 37.683334350586)"^^<http://www.opengis.net/ont/sf#wktLiteral>;
+rdfs:label "Castel Vetrano".
+dbp:Sciacca wgs84:geometry "<http://www.opengis.net/def/crs/OGC/1.3/CRS84> POINT(13.088889122009 37.509166717529)"^^<http://www.opengis.net/ont/sf#wktLiteral>;
+rdfs:label "Sciacca".
+dbp:Agrigento wgs84:geometry "<http://www.opengis.net/def/crs/OGC/1.3/CRS84> POINT(13.583333015442 37.316665649414)"^^<http://www.opengis.net/ont/sf#wktLiteral>;
+rdfs:label "Agrigento".
+dbp:Caltanisetta wgs84:geometry "<http://www.opengis.net/def/crs/OGC/1.3/CRS84> POINT(14.066666603088 37.483333587646)"^^<http://www.opengis.net/ont/sf#wktLiteral>;
+rdfs:label "Caltanisetta".
+dbp:Catania wgs84:geometry "<http://www.opengis.net/def/crs/OGC/1.3/CRS84> POINT(15.090277671814 37.5)"^^<http://www.opengis.net/ont/sf#wktLiteral>;
+rdfs:label "Catania".
+dbp:Taormina wgs84:geometry "<http://www.opengis.net/def/crs/OGC/1.3/CRS84> POINT(15.291944503784 37.852222442627)"^^<http://www.opengis.net/ont/sf#wktLiteral>;
+rdfs:label "Taormina".
+dbp:Messina wgs84:geometry "<http://www.opengis.net/def/crs/OGC/1.3/CRS84> POINT(15.550000190735 38.183334350586)"^^<http://www.opengis.net/ont/sf#wktLiteral>;
+rdfs:label "Messina".
+dbp:Capri rdfs:label "Capri".
+dbp:Frascati wgs84:geometry "<http://www.opengis.net/def/crs/OGC/1.3/CRS84> POINT(12.683333396912 41.816665649414)"^^<http://www.opengis.net/ont/sf#wktLiteral>;
+rdfs:label "Frascati".
+dbp:Siena wgs84:geometry "<http://www.opengis.net/def/crs/OGC/1.3/CRS84> POINT(11.330555915833 43.31861114502)"^^<http://www.opengis.net/ont/sf#wktLiteral>;
+rdfs:label "Siena".
+dbp:Florence wgs84:geometry "<http://www.opengis.net/def/crs/OGC/1.3/CRS84> POINT(11.25 43.783332824707)"^^<http://www.opengis.net/ont/sf#wktLiteral>;
+rdfs:label "Firenze".
+dbp:Milan wgs84:geometry "<http://www.opengis.net/def/crs/OGC/1.3/CRS84> POINT(9.1833333969116 45.466667175293)"^^<http://www.opengis.net/ont/sf#wktLiteral>;
+rdfs:label "Milano".
