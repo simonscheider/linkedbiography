@@ -69,8 +69,9 @@ function getVariables(query){ //This method heavily uses Regular Expressions for
 /**Methods for automatically extending SPARQL queries with "OPTIONAL" statements. User selected variables are extended with labels and space time optionals, allowing us to automatically retrieve labels, geometries as well as other information about a person.
 **/
 
+
 //Extends query by labels, named graphs, geometry-literals and prefixes (used to automatically deal with labels and geometries)
-function extendQuery(query) {
+window.extendQuery = function(query) {
 	var extquery = "";
 	var b = query.split(/WHERE/);
 	var where = b[1].split(/\}/)[0];
@@ -86,7 +87,7 @@ function extendQuery(query) {
 };
 
 //Extends query with labels for variables and with image retrieval (used to get name and image of a person)
-function extendPersonQuery(query) {
+var extendPersonQuery = function(query) {
 	var extquery = "";
 	var b = query.split(/WHERE/);
 	var where = b[1].split(/\}/)[0];
@@ -170,9 +171,76 @@ function remove(arr, what) {
         found = arr.indexOf(what);
     }
 }
+/**Methods fore executing queries on remote RDF data on the client machine (using rdfstore library)**/
+
+var executeQueryRdf = function (query, datasource, graphname) {	
+	rdfstore.create(function(err, store) {
+		store.execute("LOAD "+datasource+" INTO GRAPH "+graphname, function() { 		
+		//store.execute(query, callbackrdf);		
+		});
+	});
+};
+
+var callbackrdf = function (err, results){
+		"Number of results: "+console.log(results.length);		
+		var result = " <table border='2' cellpadding='9'>" ;	
+		var variable =	"";	 
+		var binding = '';
+		for (var i = 0; i < results.length; i++) {
+			numberofresults++;
+			binding = results[i]
+			var keys = Object.keys(binding)			
+			result += " <tr> " ;
+			for (var j =0; j < keys.length; j++) {	
+				variable = keys[j];
+				//Only those variables that are currently selected and are not labels should be considered				
+				if (!/__label/.test(variable)&& !/_\d_\d/.test(variable)&&(currentSelvariables.vars.indexOf("?"+variable)> -1 || currentSelvariables.propvars.indexOf("?"+variable)>-1)){
+					if (binding[variable]) {
+						var label ="";
+						var value = "";												
+						if (binding[variable+"__label"]){	
+							label = binding[variable+"__label"].value;
+						} else {
+							label = binding[variable].value;
+						};
+						if (binding[variable].type == "uri") {
+							value = buildHTML(binding[variable].value, label);
+							} else {
+							value = binding[variable].value;
+						};				
+						result += " <td> " + value + " </td> " ;						
+						//get the space literals from the result set and map them 
+						if (binding[variable+"_0_0"]&& binding[variable+"_1_0"] ) {
+							displayGeometry("<http://www.opengis.net/def/crs/OGC/1.3/CRS84> POINT ("+binding[variable+"_0_0"].value+" "+binding[variable+"_1_0"].value+")", label);
+							} else 	
+						if (binding[variable+"_2_0"]) {
+							displayGeometry(binding[variable+"_2_0"].value+")", label);
+							} else	
+						if (binding[variable+"_3_0"]) {
+							displayGeometry(binding[variable+"_2_0"].value, label); 
+							} else
+						if (binding[variable+"_4_1"]) {
+						displayGeometry(binding[variable+"_3_1"].value, label);
+							} else
+						if (binding[variable+"_5_1"]) {
+							displayGeometry(binding[variable+"_4_1"].value, label);
+							}; 
+					} else {
+							result += " <td> </td> "
+					};					
+				};
+				
+			}; 
+			result += " </tr> "; 
+		};	
+        result += "</table>" ;		
+        document.getElementById("result").innerHTML = result;  
+		document.getElementById("resultsnumber").innerHTML = numberofresults; 	
+};
 
 
-/**Methods for executing and handling queries
+
+/**Methods for executing and handling queries on endpoints
 **/
 //Executes any query
 var executeQuery = function(query, endpoint) {
